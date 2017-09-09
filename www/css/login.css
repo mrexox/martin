@@ -1,0 +1,13 @@
+#submitButton {
+		width: 150px;
+		margin-top: 5px;
+}
+
+.form-signin {
+		width: 50%;
+		margin: 0 auto;
+}
+
+.form-control {
+		margin-top: 5px;
+}

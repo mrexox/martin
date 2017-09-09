@@ -1,0 +1,119 @@
+body {
+		margin: 0;
+}
+
+.navigation {
+		position: fixed;
+		left: 0;
+		height: 100%;
+		width: 120px;
+		background-color: white;
+		border-style: solid;
+		border-width: 0 5px 0 0;
+		border-color: #ddd;
+		font-family: sans;
+}
+
+.workspace {
+		display: block;
+		margin-left: 120px;
+		padding: 10px 10px 0 10px;
+		
+}
+
+
+.navigation > ul {
+		list-style-type: none;
+		padding: 10px 0 0 0;
+		margin: 0;
+}
+
+.navigation li {
+		padding: 7px 0 7px 8px;
+}
+
+.navigation li:hover {
+		background: #eee;
+		cursor: pointer;
+}
+
+li.active {
+		border-width: 0 2px 0 0;
+		border-style: solid;
+		border-color: #00f;
+}
+
+.summary {
+		display: inline-block;
+		padding: 5px 10px 5px 10px;
+		color: gray;
+		margin: 2px;
+		border: 1px solid gray;
+		border-radius: 20px;
+}
+
+/* Orders */
+
+.button,
+.new-order {
+		display: inline-block;
+		margin: 2px;
+		padding: 5px 10px 5px 10px;
+		border: 1px solid gray;
+		border-radius: 20px;
+}
+
+.button:hover,
+.new-order:hover {
+		cursor: pointer;
+		background-color: #d6d6d6;
+}
+
+.orders {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-content: flex-start;
+}
+
+.order {
+		width: 20%;
+		margin: 10px;
+		border: 1px solid gray;
+		text-align: center;
+		padding: 10px 0 10px 0;
+		border-radius: 15px;
+}
+
+.order:hover {
+		cursor: pointer;
+		background-color: #d6d6d6;
+}
+
+.order img {
+		max-width: 90%;
+		max-height: 90%;
+		border-radius: 10px;
+}
+
+
+/* Messages */
+
+.messages table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
+
+.message__delete {
+		cursor: pointer;
+		color: red;
+}
