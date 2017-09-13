@@ -19,11 +19,30 @@
 (defparameter *delete-message-query*
 	"DELETE FROM message
    WHERE id=?")
+(defparameter *update-order-query*
+	"UPDATE done_order
+   SET name=?,
+       description=?,
+       response=?,
+       site_href=?,
+       valyay_comment=?,
+       ian_comment=?
+   WHERE id=?")
+(defparameter *delete-order-query*
+	"DELETE FROM done_order
+   WHERE id=?")
 
+(defun log-string (message)
+	(acceptor-log-message *acceptor* nil message))
 
 (defmacro with-my-connection (conn-symbol &body body)
 	`(with-connection (,conn-symbol :sqlite3 :database-name *database-name*)
 		 ,@body))
+
+(defmacro with-authorization-check (&body body)
+	`(if (not (authorized))
+			 (format nil "Fuck off!")
+			 (progn ,@body)))
 
 (append *dispatch-table*
 				(list (create-folder-dispatcher-and-handler
@@ -31,9 +50,9 @@
 
 (defun start-server (&optional (port 8080))
   (setf *acceptor*
-	(make-instance 'easy-acceptor
-		       :port port
-		       :document-root (resource-path "www")))
+				(make-instance 'easy-acceptor
+											 :port port
+											 :document-root (resource-path "www")))
   (start *acceptor*))
 
 (defun stop-server ()
@@ -101,7 +120,7 @@
 					("type_of_order" type-of-order)
 					("company_name" company-name)
 					("comment" comment)))
-											
+
 
 (defun messages-json ()
 	(with-my-connection conn
@@ -125,7 +144,19 @@
 	(with-my-connection conn
 		(let* ((query (prepare conn *delete-message-query*)))
 			(execute query id))))
-			
+
+(defun update-order (id &key name description site-href response
+															 ian-comment valyay-comment)
+	(with-my-connection conn
+		(let* ((query (prepare conn *update-order-query*))
+					 (result (execute query name description response site-href valyay-comment ian-comment id)))
+			(if result t nil))))
+
+(defun delete-order (id)
+	(with-my-connection conn
+		(if (execute (prepare conn *delete-order-query*) id)
+				"Success"
+				"Error")))
 
 ;;; Easy handlers
 
@@ -177,25 +208,47 @@
 
 (define-easy-handler (done-orders :uri "/console/done-orders") ()
 	"Returns all orders in JSON"
-	(if (not (authorized)) (format nil "Fuck off!")
-			(progn
-				(setf (content-type*) "application/json")
-				(format nil (done-orders-json)))))
+	(with-authorization-check
+		(setf (content-type*) "application/json")
+		(format nil (done-orders-json))))
 
 (define-easy-handler (messages :uri "/console/messages") ()
 	"Returns all messages in JSON"
-	(if (not (authorized)) (format nil "Fuck off!")
-			(progn
-				(setf (content-type*) "application/json")
-				(format nil (messages-json)))))
+	(with-authorization-check
+		(setf (content-type*) "application/json")
+		(format nil (messages-json))))
 
 (define-easy-handler (del-message :uri "/console/delete-message") (id)
-	"Deletes the message with given ID"
-	(if (not (authorized))
-			(format nil "Fuck off!")
-			(progn
-				(delete-message id)
-				nil)))
+	"Deletes the message with given ID. Only DELETE method allowed."
+	(with-authorization-check
+		(when (eql (request-method*) :delete)
+			(delete-message id)
+			nil)))
+
+(define-easy-handler (manage-order :uri "/console/done-order") (order-id)
+	"Updates information about post. Only PUT method allowed."
+	(with-authorization-check
+		(cond ((eql (request-method*) :post)
+					 (let* ((json-obj (parse (raw-post-data :force-text t)))
+									(name (val json-obj "name"))
+									(description (val json-obj "description"))
+									(response (val json-obj "response"))
+									(site-href (val json-obj "site_href"))
+									(ian-comment (val json-obj "ian_comment"))
+									(valyay-comment (val json-obj "valyay_comment")))
+						 (if (update-order order-id :name name
+																		:description description
+																		:site-href site-href
+																		:response response
+																		:ian-comment ian-comment
+																		:valyay-comment valyay-comment)
+								 (setf (return-code*) +http-no-content+)
+								 (setf (return-code*) +http-bad-request+))
+						 nil))
+					((eql (request-method*) :delete)
+					 (delete-order order-id)))))
+						 
+					
 
 ;;; Need a function that nulls all connections when
 

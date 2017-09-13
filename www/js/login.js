@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				
 			}	
 		};
-		console.log(login + ' ' + password);
 		xmlhttp.send(JSON.stringify({login:login, password:password}));
 	});
 });

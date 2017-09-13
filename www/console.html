@@ -11,9 +11,31 @@
  				<script type="text/babel" src="./js/console.js"></script> 
 		</head>
 		<body>
+			<style>
+			 #waiting {
+					 position: absolute;
+					 left: 0;
+					 right: 0;
+					 top: 0;
+					 bottom: 0;
+					 margin-right: auto;
+					 margin-left: auto;
+					 margin-top: auto;
+					 margin-bottom: auto;
+					 width: 200px;
+					 height: 50px;
+					 text-align: center;
+					 padding: 30px 20px 30px 20px;
+			 }
+			</style>
+			<div id="waiting">
+				Пять сек...
+				<br>
+				Грузятся библиотеки
+			</div>
 				<div id="root"></div>
 				<script type="text/babel">
-
+				 $('#waiting').remove();
 				 ReactDOM.render(
 						 <Console />,
 						 document.getElementById('root')
