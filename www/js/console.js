@@ -4,6 +4,7 @@ const MESVIEW = 0;
 const ORDSVIEW = 1;
 const ORDVIEW = 2;
 const ORDEDIT = 3;
+const ORDCREATE = 4;
 
 class Console extends React.Component {
 	constructor(props) {
@@ -13,8 +14,15 @@ class Console extends React.Component {
 		this.changeView = this.changeView.bind(this);		
 		this.delMessCallback = this.delMessCallback.bind(this);
 		this.viewOrder = this.viewOrder.bind(this);
+
+		this.createDoneOrder = this.createDoneOrder.bind(this);
+		this.handleCreateOrder = this.handleCreateOrder.bind(this);
+		
+		this.updateDoneOrder = this.updateDoneOrder.bind(this);
 		this.handleUpdateOrder = this.handleUpdateOrder.bind(this);
+		
 		this.handleDeleteOrder = this.handleDeleteOrder.bind(this);
+
 		this.state = {
 			view: ORDSVIEW,
 			orders: [],
@@ -57,6 +65,71 @@ class Console extends React.Component {
 		this.setState({ messages: messages });
 	}
 
+	updateDoneOrder(order) {
+		if (order.photo === undefined) {
+			order.photo = this.state.currentOrder.photo;
+		}
+		var _data = JSON.stringify(order);
+		var _this = this;
+		$.ajax({
+			dataType: 'json',
+			contentType: "application/json; charset=utf-8",
+			method: 'POST',
+			url: '/console/done-order?order-id=' + this.state.currentOrder.id,
+			data: _data,
+			success: function(data) {
+				_this.handleUpdateOrder(_this.state.currentOrder.id, order);
+			},
+			error: function(a, b, c){
+				alert('Ошибка: '+a.responseText+b+c);
+			}
+		});
+		this.changeView(ORDVIEW);
+	}
+
+	createDoneOrder(order){
+		if (order.photo === undefined) {
+			order.photo = "";
+		}
+		var _data = JSON.stringify(order);
+		var _this = this;
+		$.ajax({
+			dataType: 'json',
+			contentType: "application/json; charset=utf-8",
+			method: 'POST',
+			url: '/console/done-order',
+			data: _data,
+			success: function() {
+				_this.handleCreateOrder(order);
+				_this.changeView(ORDVIEW);
+			},
+			error: function(a, b, c){
+				alert('Ошибка: '+a.responseText+b+c);
+			}
+		});
+	}
+
+	makeEmptyOrder() {
+		return {
+			name: '',
+			description: '',
+			photo: '#',
+			ian_comment: '',
+			valyay_comment: '',
+			site_href: '',
+			response: ''
+		};
+	}
+
+	handleCreateOrder(order) {
+		let orders = this.state.orders;
+		let index = orders.unshift(order);
+		this.setState({oreders: orders,
+									 currentOrder: order,
+									 view: ORDVIEW
+									});
+	}
+	
 	handleUpdateOrder(id, updatedOrder) {
 		let orders = this.state.orders;
 		let order = $.grep(orders, (or) => {return or.id == id;})[0];
@@ -64,15 +137,14 @@ class Console extends React.Component {
 		order.name = updatedOrder.name;
 		order.description = updatedOrder.description;
 		order.response = updatedOrder.response;
+		order.photo = updatedOrder.photo;
 		order.ian_comment = updatedOrder.ian_comment;
 		order.valyay_comment = updatedOrder.valyay_comment;
 		order.site_href = updatedOrder.site_href;
 		orders.splice(index, 1, order);
-		console.log(order.photo);
 		this.setState({ orders: orders,
 										currentOrder: order
 									});
-		// photo too
 	}
 
 	handleDeleteOrder(id) {
@@ -95,6 +167,7 @@ class Console extends React.Component {
 			workspace =
 				<DoneOrders
 			viewOrder={this.viewOrder}
+			createClick={() => this.changeView(ORDCREATE)}
 			orders={this.state.orders} />;
 		} else if ( view === ORDVIEW ) {
 			workspace =
@@ -105,10 +178,16 @@ class Console extends React.Component {
 			edit={() => this.changeView(ORDEDIT)} />;
 		} else if ( view === ORDEDIT) {
 			workspace =
-				<DoneOrderFullEdit
+				<DoneOrderFullForm
 			order={this.state.currentOrder}
-			handleUpdateOrder={this.handleUpdateOrder}
-			back={() => this.changeView(ORDVIEW)}/>;
+			back={() => this.changeView(ORDVIEW)}
+			save={this.updateDoneOrder} />;
+		} else if ( view === ORDCREATE ) {
+			workspace =
+				<DoneOrderFullForm
+			order={this.makeEmptyOrder()}
+			back={() => this.changeView(ORDSVIEW)}
+			save={this.createDoneOrder} />;
 		} else {
 			workspace = void 0;
 		}
@@ -156,7 +235,8 @@ class DoneOrders extends React.Component {
 				<div className='summary'>
 					Всего: {this.props.orders.length}
 				</div>
-				<div className='new-order'>
+				<div className='new-order'
+						 onClick={this.props.createClick}>
 					Добавить
 				</div>
 				<div className='orders'>
@@ -279,39 +359,77 @@ class DoneOrderFull extends React.Component {
 	}
 }
 
-class DoneOrderFullEdit extends React.Component {
+class DoneOrderFullForm extends React.Component {
 	constructor(props) {
 		super(props);
+		this.previewImage = this.previewImage.bind(this);
 		this.save = this.save.bind(this);
+		
+		this.state = {
+			file: null
+		};
+	}
+	
+	save() {
+		var order = {
+			name: $('#title').val(),
+			description: $('#description').val(),
+			site_href: $('#href').val(),
+			response: $('#response').val(),
+			valyay_comment: $('#valyay_comment').val(),
+			ian_comment: $('#ian_comment').val()
+		};
+		
+		if (this.state.file) {
+			var formData = new FormData();
+			formData.append('photo', this.state.file);
+			var _this = this;
+			$.ajax({
+				url: '/console/upload-file',
+				method: 'POST',
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(photoUrl) {
+					order.photo = photoUrl;
+					_this.props.save(order);
+				},
+				error: function(a, b, c) {
+					alert('Ошибка загрузки изображения: '+a.responseText+b+c);
+				}
+			});
+		} else {
+			this.props.save(order);
+		}
 	}
 
-	save() {
-		var _this = this;
-		var saved = {
-				name: $('#title').val(),
-				description: $('#description').val(),
-				site_href: $('#href').val(),
-				response: $('#response').val(),
-				valyay_comment: $('#valyay_comment').val(),
-				ian_comment: $('#ian_comment').val()
+	previewImage() {
+		var preview = document.querySelector('img'); //selects the query named img
+    var file    = document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+		var src = preview.src;
+		reader.onloadend = function() {
+			preview.src = reader.result;
 		};
-		var _data = JSON.stringify(saved);
-		jQuery.ajax({
-			dataType: 'json',
-			contentType: "application/json; charset=utf-8",
-			method: 'POST',
-			url: '/console/done-order?order-id=' + this.props.order.id,
-			data: _data,
-			success: function(data){_this.props.handleUpdateOrder(_this.props.order.id, saved);},
-			error: function(a, b, c) {alert('ERROR '+a.responseText+b+c);}
-		});
-		this.props.back();
+
+		if (file) {
+			reader.readAsDataURL(file);
+			this.setState({ file: file });
+		} else {
+			preview.src = src;
+			alert('Невозможно загрузить файл. Проверьте код на наличие ошибок.');
+		}
 	}
 	
 	render() {
 		let order = this.props.order;
 		return (
 			<div>
+				<div className='button'
+						 onClick={(e) => this.props.back()}>
+					Назад
+				</div>
 				<div className='button'
 						 onClick={(e) => this.save()}>
 					Сохранить
@@ -320,6 +438,7 @@ class DoneOrderFullEdit extends React.Component {
 					<div className='full-order__title'>
 						<input id='title' type='text' defaultValue={order.name} />
 					</div>
+					<input type='file' onChange={this.previewImage} />
 					<img className='full-order__image' src={order.photo} />
 					<div className='full-order__description'>
 						<textarea id='description' type='text' defaultValue={order.description} />
