@@ -1,81 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
-    <meta charset="UTF-8">
-    <title>Document</title>
-     <link rel="stylesheet" type="text/css" href="home.css">
-</head>
-<body>
-    <div class="layout">
-        <header>
-                <div class="logo">
-               <a href="" >  <img class="logo__img" src=".\background\logo1.png"></a>
-                </div>
-                <div class="search">
-                <form class="searching">
-                    <input type="search" size="10" class="query" value="" placeholder="Search">
-                </form>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+<!--     <link rel="icon" href="../../favicon.ico"> -->
+    <title>Home</title>
+
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body>
+    <header>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Dev-Studio</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+       <!--  <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Портфолио</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Заказать</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Контакты</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Поиск по сайту">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        </form> -->
+      </div>
+    </nav>
+    </header>
+    <div id="main">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item carousel-back-1 active">
+         <!--  <img class="first-slide" src="../img/1-slide.jpg" alt="First slide"> -->
+          <div class="container">
+            <div class="carousel-caption d-md-block ">
+              <h1>Example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             </div>
-            <div class="menu">
-                <ul class="main_menu">
-                    <li><a href="">О нас</a></li>
-                    <li><a href="">Портфолио</a></li>
-                    <li><a href="">Заказать</a></li>
-                    <li><a href="">Контакты</a></li>
-                </ul>
+          </div>
+        </div>
+        <div class="carousel-item carousel-back-2">
+         <!--  <img class="second-slide" src="../img/2-slide.jpg" alt="Second slide"> -->
+          <div class="container">
+            <div class="carousel-caption  d-md-block">
+              <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             </div>
-           
-        </header>
-        <div class="content">
-            <div class="top">
-                <h1> О нас </h1>
+          </div>
+        </div>
+        <div class="carousel-item carousel-back-3">
+          <!-- <img class="third-slide" src="../img/3-slide.jpg" alt="Third slide"> -->
+          <div class="container">
+            <div class="carousel-caption  d-md-block ">
+              <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>>
             </div>
-            <div class="rel-image">
-                   <img class="image" src=".\background\1845.jpg">
-                    <span class="text-image">
-			<p>Мы такие охереные. Мы умеем делать такие классные штуки, что вам даже не снилось. У нас есть даже два текстовых редактора для этого.</p>
-			<p align="center">Валяй - это фронтэндщик</p>
-			<p align="center">Киселяй - это бэкэндщик</p>
-			<p>Мы ждём ваших заказов за 25к. Вы не пожалеете, только посмотрите, какая у нас охеренная менюшка!</p>
-                    </span>
-            </div>
-            <div class ="center">
-                <h1> Наши работы </h1>
-            </div>
-            <div class="works">
-               <a href="" > <img class="work" src=".\background\1111.jpg"> </a>
-                <a href="" > <img class="work" src=".\background\1111.jpg"> </a>
-                <a href="" > <img class="work" src=".\background\1111.jpg"> </a>
-            </div>
-            <div class="contact">
-                <h1> Напишите нам </h1>
-               <div class= "form_row">
-                    <form>
-                        <div class = "personal">
-                         <input class ="name" type="text" name="name" size="20" maxlength="50" required placeholder="Ваше имя">
-                         <input class ="data" type="text" name="text2" size="20" maxlength="50" required placeholder="Почта/телефон">
-                         <input class ="submit" type="submit" name="submit" value="Отправить">
-                        </div>
-                        <div class="message">
-                         <textarea name="text" cols="40" rows="9" required placeholder="Сообщение" wrap="hard"></textarea>
-                        </div> 
-                    </form>
-                </div>
-            </div>
-        </div>  
-        <footer>
-            <div class="buttons">
-                
-                <a href="" > <img class="vk" src="E:\S\dev-studio\temp\Suffering\Main project\background\vk.jpg"> </a>
-                
-               
-                <a href="" > <img class="tw" src="E:\S\dev-studio\temp\Suffering\Main project\background\tw.jpg"> </a>
-            
-               
-                <a href="" > <img class="in" src="E:\S\dev-studio\temp\Suffering\Main project\background\in.jpg"> </a>
-                
-            </div>
-        </footer>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-</body>
+    <section class="our-works">
+    
+       <h1> Наши работы</h1>
+    
+       <div class="works">
+           <div class="work-1">
+            <a href="">
+                <h2>One more for good measure.</h2>
+                 <img class="screen" src="../img/1111.jpg">
+                 </a>  
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+           </div>
+           <div class="work-2">
+               <a href="">
+                <h2>One more for good measure.</h2>
+                <img class="screen" src="../img/1111.jpg">
+                </a>  
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+           </div>
+           <div class="work-3">
+            <a href="">
+                 <h2>One more for good measure.</h2>
+                 <img class="screen" src="../img/1111.jpg">
+                 </a>  
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+           </div>
+           <div class="work-4">
+            <a href="">
+                 <h2>One more for good measure.</h2>
+                 <img class="screen" src="../img/1111.jpg">
+                 </a>  
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+           </div>
+      </div>
+    </section>
+    <section class="orders">
+    <a href="">
+      <div class="order-1">
+       <div class="imag">
+         <img class="screen" src="../img/1111.jpg">
+        </div>
+       <div class="info"> 
+        <div class="description">
+         <h2>Лэндинг пейдж</h2>
+         <h3> Он норм, потому что он норм и все тут, берите его и все будет норм.</h3>
+        </div>
+        <div>
+      <ul>
+        <li>Разработка собственного дизайна. </li>
+        <li>Консоль для управления сайтом. </li>
+        <li>Счётчик посещений.</li>
+        <li>Разработка ТЗ в соответствии с требованиями.</li>
+      </ul>
+        </div>
+       </div> 
+      </div>
+    </a>
+    <a href="">
+      <div class="order-2">
+       <div class="imag">
+         <img class="screen" src="../img/1111.jpg">
+        </div>
+      <div class="info">
+        <div class="description">
+         <h2>Блог</h2>
+         <h3> Он норм, потому что он норм и все тут, берите его и все будет норм.</h3>
+        </div>
+        <div>
+      <ul>
+        <li>Разработка собственного дизайна. </li>
+        <li>Консоль для управления сайтом. </li>
+        <li>Счётчик посещений.</li>
+        <li>Разработка ТЗ в соответствии с требованиями.</li>
+      </ul>
+        </div>
+      </div>
+     </div> 
+    </a>
+    <a href="">
+      <div class="order-3">
+       <div class="imag">
+         <img class="screen" src="../img/1111.jpg">
+        </div>
+      <div  class="info">
+        <div class="description">
+         <h2>Магазин/каталог</h2>
+         <h3> Он норм, потому что он норм и все тут, берите его и все будет норм.</h3>
+        </div>
+        <div>
+      <ul>
+        <li>Разработка собственного дизайна. </li>
+        <li>Консоль для управления сайтом. </li>
+        <li>Счётчик посещений.</li>
+        <li>Разработка ТЗ в соответствии с требованиями.</li>
+      </ul>
+        </div>
+      </div>
+      </div>
+    </a>
+    </section>
+  </div>
+   <footer>
+   
+     <div class="footer-start">
+      <div class="footer-menu">
+        <div class="menu-1">
+          <span>О нас</span>
+         <ul>
+          <li><a href="#">Кто мы</a></li>
+          <li><a href="#">Наши работы</a></li>
+          <li><a href="#">Отзывы</a></li>
+         </ul>
+        </div>
+        <div class="menu-2">
+          <span>Услуги</span>
+        <ul>
+          <li><a href="#">Сайт-визитка</a></li>
+          <li><a href="#">Личный Блог</a></li>
+          <li><a href="#">Каталог товаров</a></li>
+          <li><a href="#">Интернет магазин</a></li>
+         </ul>
+        </div>
+        <div class="menu-3">
+          <span>Связаться</span>
+         <ul>
+          <li><a href="#">Почта</a></li>
+         </ul>
+        </div>
+      </div>
+      <div class="message">
+       <form>
+        <input class="message-field"  type="text" placeholder="Sign up for our newsletter" id="newsletter" name="email" size="40" maxlength="100" value="">
+        <input class ="btn btn-send" type="submit" name="submit" value="Отправить">
+       </form>
+      </div>
+
+     </div>
+   
+    <div class="footer-end">
+      <div class="footer-end-end">
+      <div class="copy">
+        <p>© 2017 Incase Design Corp. All Rights Reserved.</p>
+      </div>
+      <div class="links">
+        <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden=true></i></a>
+        <a href="#"><i class="fa fa-vk fa-2x" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+      </div>
+      </div>
+    </div>  
+  </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>
