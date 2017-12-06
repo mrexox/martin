@@ -1,0 +1,213 @@
+// Place all the styles related to the Admin::Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+		margin: 0;
+}
+
+.navigation {
+		position: fixed;
+		left: 0;
+		height: 100%;
+		width: 120px;
+		background-color: white;
+		border-style: solid;
+		border-width: 0 5px 0 0;
+		border-color: #ddd;
+		font-family: sans;
+}
+
+.workspace {
+		display: block;
+		margin-left: 120px;
+		padding: 10px 10px 0 10px;
+		background-color: #fafafa;
+		height: 100%;
+}
+
+
+.navigation > ul {
+		list-style-type: none;
+		padding: 10px 0 0 0;
+		margin: 0;
+}
+
+.navigation li {
+		padding: 7px 0 7px 8px;
+}
+
+.navigation li:hover {
+		background: #eee;
+		cursor: pointer;
+}
+
+li.active {
+		border-width: 0 2px 0 0;
+		border-style: solid;
+		border-color: #00f;
+}
+
+.summary {
+		display: inline-block;
+		padding: 5px 10px 5px 10px;
+		color: gray;
+		margin: 2px;
+		border: 1px solid gray;
+		border-radius: 20px;
+}
+
+/* Orders */
+
+.button,
+.new-order {
+		display: inline-block;
+		margin: 2px;
+		margin-left: 5px;
+		margin-right: 5px;
+		padding: 5px 10px 5px 10px;
+		background-color: white;
+		border-radius: 20px;
+		box-shadow: 0 1px 15px 1px #f0f0f0;
+}
+
+.button:hover,
+.new-order:hover {
+		cursor: pointer;
+		box-shadow: 0 1px 5px 1px #c0c0c0;
+}
+
+.orders {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-content: flex-start;
+}
+
+.order {
+		width: 20%;
+		margin: 10px;
+		text-align: center;
+		padding: 10px 0 10px 0;
+		border-radius: 5px;
+		background-color: white;
+		box-shadow: 0 1px 15px 1px #f0f0f0;
+}
+
+.order:hover {
+		cursor: pointer;
+		box-shadow: 0 1px 15px 1px #c0c0c0;
+}
+
+.order img {
+		max-width: 90%;
+		max-height: 90%;
+		border-radius: 10px;
+}
+
+
+/* Messages */
+
+.messages table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
+
+.message__delete {
+		cursor: pointer;
+		color: red;
+}
+
+
+.full-order {
+		padding-left: 30px;
+		padding-right: 30px;
+		margin-top: 10px;
+}
+
+.full-order__title {
+		display: block;
+		max-width: 300px;
+		font-size: 19px;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 15px;
+		padding: 5px 10px 5px 10px;
+		border-radius: 5px;
+		background-color: white;
+		box-shadow: 0 1px 15px 1px #f2f2f2;
+}
+
+.full-order__image {
+		display: block;
+		margin: 0 auto;
+		border-radius: 5px;
+}
+
+.full-order__description {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		font-style: italic;
+}
+
+.full-order__comment {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+}
+
+.full-order__comment1,
+.full-order__comment2 {
+		padding: 5px 10px 5px 10px;
+		border-radius: 5px;
+		flex-grow: 1;
+		margin: 0 20px 0 20px;
+		min-height: 200px;
+		background-color: white;
+		box-shadow: 0 1px 15px 1px #f2f2f2;
+}
+
+.full-order__response {
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding: 5px 10px 5px 10px;
+		border-radius: 5px;
+		background-color: white;
+		box-shadow: 0 1px 15px 1px #f2f2f2;
+}
+
+.full-order__href {
+		padding: 5px 10px 5px 10px;
+		border-radius: 5px;
+		background-color: white;
+		box-shadow: 0 1px 15px 1px #f2f2f2;
+}
+
+.full-order textarea {
+		width: 100%;
+}
+
+.inactive {
+		box-shadow: none;
+		background: none;
+		color: gray;
+		border: 1px solid gray;
+}
+
+.inactive:hover {
+		cursor: auto;
+		box-shadow: none;
+}
+						

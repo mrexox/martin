@@ -1,0 +1,27 @@
+<div class="messages">
+    <div class="summary"> Всего: <%= @message ? @messages.size : 0 %>  </div>
+    <table>
+	<thead>
+	    <th>Имя</th>
+	    <th>Название компании</th>
+	    <th>Почта</th>
+	    <th>Телефон</th>
+	    <th>Вариант заказа</th>
+	    <th>Комментарий</th>
+	    <th></th>
+	</thead>
+	<tbody>
+	    <% @messages.each do |message| %>
+		<tr data-message-id="<%= message.id %>" >
+		    <td><%= message.name %></td>
+		    <td><%= message.company_name %></td>
+		    <td><%= message.email %></td>
+		    <td><%= message.telephone %></td>
+		    <td><%= message.type_of_order %></td>
+		    <td><%= message.comment %></td>
+		    <td class="message__delete">x</td>
+		</tr>
+	    <% end %>
+	</tbody>
+    </table>
+</div>

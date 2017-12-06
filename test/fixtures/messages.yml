@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  copmany_name: MyString
+  email: MyString
+  telephone: MyString
+  type_of_order: 1
+  comment: MyText
+
+two:
+  name: MyString
+  copmany_name: MyString
+  email: MyString
+  telephone: MyString
+  type_of_order: 1
+  comment: MyText
