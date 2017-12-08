@@ -15,6 +15,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Secure passwords
 gem 'bcrypt'
 
+# Photo of the Order
+gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
   gem 'byebug'

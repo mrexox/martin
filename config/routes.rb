@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'contact', to: 'home#contact'
 
   namespace :admin do
       delete '/messages/:id', to: 'messages#destroy'

@@ -1,4 +1,5 @@
 class Admin::MessagesController < ApplicationController
+    layout 'admin'
   def index
       @messages = Message.sorted
   end
