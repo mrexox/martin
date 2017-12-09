@@ -23,12 +23,4 @@ $(function(){
 	$(".menu span").click(function(){
 		$(".menu ul li").toggle(200);
 	});
-	/*
-	$(".menu-2 span").click(function(){
-		$(".menu-2 ul li").toggle(200);
-	});
-	$(".menu-3 span").click(function(){
-		$(".menu-3 ul li").toggle(200);
-	});
-	*/
 });

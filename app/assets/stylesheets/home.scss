@@ -82,25 +82,37 @@ body *{ // What does * mean?
 }
 */
 
-.orders {
+.our-orders {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: stretch; // Full height all
 }
 
-.order {
+.our-order {
 	width: auto;
 	box-shadow: 0 0 10px 1px #ddd;
 	background-color: #eeeeee;
 	margin-bottom: 0; // Like standing on a footer
+	margin: 0 9px 0 9px;
+	border-radius: 10px 10px 0 0;
+	cursor: pointer;
+}
+
+.our-order:hover {
+	box-shadow: 0 1px 15px 1px #c0c0c0;
 }
 
 @media(max-width: 769px){
-	.orders{
+	.our-orders{
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start; /* No stretch*/
+	}
+	.our-order {
+		margin-bottom: 10px;
+		border-radius: 10px;
+		box-shadow: 0 1px 15px 1px #c0c0c0;
 	}
 }
 .imag{
@@ -112,6 +124,8 @@ body *{ // What does * mean?
 	transition: opacity 124ms linear, transform 124ms linear;  /* Плавное изменение прозрачности и увеличения */
 	display: block; /* Убираем полосу под картинкий */
 	margin: 0 auto; /* В центр */
+		width: 100%;
+		border-radius: 10px 10px 0 0;
 }
 a:hover .imag > img{
 	opacity: 0.9; /* Высветляем картинку, но она становится темнее, так как под ней черный фон */
@@ -171,14 +185,16 @@ footer{
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	flex-wrap: wrap;
-/*	width: 50%;*/
+	flex-wrap: nowrap;
+	margin-left: 100px; // FIXME
 }
-.menu, .menu, .menu, .menu{
+
+.menu{
 /*	border: 1px solid blue;*/
 	padding: 30px 50px 50px 50px;
+	width: 296px; // FIXME
 }
-.menu > span, .menu > span, .menu > span, .menu > span{
+.menu > span{
 	font-family: 'AkrobatR';
 	color: #eeeeee;
 	cursor: pointer;
@@ -207,7 +223,7 @@ footer{
 	flex-direction: column;
   }
 }
-.message *{
+.message * {
 	margin: 0;
 	padding: 0px 0px 10px 0px;
 	display: flex;
@@ -229,6 +245,8 @@ display: inline-block;
 width: calc(100% - 125px) !important;
 background: #fff;
 color: #333;
+border-radius: 10px 0 0 10px;
+padding: 0 10px 0 10px;
 }
 /*@media(max-width: 950px){
 	.message-field{
@@ -239,6 +257,7 @@ color: #333;
 }
 }*/
 /*s;*/
+
 .btn {
   display: inline-block;
   font-weight: normal;
@@ -292,6 +311,8 @@ color: #333;
   color: #2A363B;
   background-color: #FECEA8;
   border-color: #FECEA8;
+	margin: 0;
+	border-radius: 0 10px 10px 0;
 }
 
 .btn-send:hover {
@@ -336,10 +357,11 @@ color: #333;
 }
 }*/
 
-.copy p{
+.copy {
 	font-family: 'AkrobatL';
 	color: #eeeeee;
 	padding-top: 15px;
+	margin: 0 auto;
 }
 /*.links{
 	height: 5%;
