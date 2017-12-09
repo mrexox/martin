@@ -95,7 +95,6 @@ body *{ // What does * mean?
 	background-color: #eeeeee;
 	margin-bottom: 0; // Like standing on a footer
 	margin: 0 9px 0 9px;
-	border-radius: 10px 10px 0 0;
 	cursor: pointer;
 }
 
@@ -125,7 +124,6 @@ body *{ // What does * mean?
 	display: block; /* Убираем полосу под картинкий */
 	margin: 0 auto; /* В центр */
 		width: 100%;
-		border-radius: 10px 10px 0 0;
 }
 a:hover .imag > img{
 	opacity: 0.9; /* Высветляем картинку, но она становится темнее, так как под ней черный фон */
@@ -223,41 +221,6 @@ footer{
 	flex-direction: column;
   }
 }
-.message * {
-	margin: 0;
-	padding: 0px 0px 10px 0px;
-	display: flex;
-	justify-content: space-around;
-
-}
-@media (min-width: 769px){
-.message {
-	width: 50%;
-  }
-}
-@media (min-width: 1440px){
-.message {
-	width: 30%;
-  }
-}
-.message-field{
-display: inline-block; 
-width: calc(100% - 125px) !important;
-background: #fff;
-color: #333;
-border-radius: 10px 0 0 10px;
-padding: 0 10px 0 10px;
-}
-/*@media(max-width: 950px){
-	.message-field{
-display: inline-block; 
-width: calc(100% - 300px) !important;
-background: #fff;
-color: #333;
-}
-}*/
-/*s;*/
-
 .btn {
   display: inline-block;
   font-weight: normal;
@@ -277,6 +240,7 @@ color: #333;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+
 .btn-outline-success {
   color: #FECEA8;
   background-image: none;
