@@ -1,6 +1,7 @@
-// Place all the styles related to the Message controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/** Сообщение от пользователя нам
+*	TODO Нужно добавить адаптивность и поместить логотип слева от формы 
+*	для отправки.
+*/
 .message__header {
 	font-size: 30px;
 	display: inline-block;
@@ -25,6 +26,7 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 60%;
+
 	input,
 	textarea {
 		margin-bottom: 25px;
@@ -33,11 +35,17 @@
 		padding: 10px 10px 10px 10px;
 		border: 1px solid white;
 	}
+
+	/* :focus - при наведении курсора */
 	input:focus,
 	textarea:focus {
 		border: 1px solid #ff5722;
 		box-shadow: 0 0 4px 1px #ff5722;
 	}
+
+	/** Кнопку нужно сделать плоской с небольшой тенью,
+	 *	меняющую цвет на оранжевый при наведении
+	 */
 	button {
 		width: 140px;
 	}
