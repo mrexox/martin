@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
       delete '/messages/:id', to: 'messages#destroy'
-      get '/', to: 'messages#index'
+      get '/', to: 'messages#index', as: 'messages'
+			resources :slides, only: [:index, :new, :edit, :create, :destroy, :update]
   end
   # Example resource route with options:
   #   resources :products do

@@ -22,65 +22,13 @@
 
 body{
 	font-family: 'AkrobatL';
-	margin: 0px;
 	padding: 0px;
 	background: #eeeeee;
 }
 body *{ // What does * mean?
 	box-sizing: border-box;
 }
-/** Not in view file yet
-*		Include if needed
 
-.our-works{
-	background: #eeeeee;
-}
-
-.our-works h1{
-	font-family: 'AkrobatEB';
-	font-weight: bold;
-	text-align: center;
-	padding: 50px;
-	font-size: 2em;
-}
-
-.works {
-	display: flex;
-	padding: 50px;
-	justify-content: space-around;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
-
-
-.work-1, .work-2, .work-3, .work-4{
-    margin: 20px; 
-	flex-basis: 30%;
-}
-.work-1 h2, .work-2 h2, .work-3 h2, .work-4 h2{
-	font-family: 'AkrobatEB';
-	font-weight: bold;
-	font-size: 1.5em;
-	color: #222831;
-}
-.work-1 p, .work-2 p, .work-3 p, .work-4 p{
-	font-family: 'AkrobatL';
-	color: #222831;
-}
-.screen{
-	position: relative;
-	width: 100%;
-}
-@media(max-width: 650px){
-     .works{
-     	display: flex;
-//       padding: 50px;
-//       background: #E84A5F;
-//      justify-content: space-around;
-        flex-direction: column;
-    }
-}
-*/
 
 .our-orders {
 	display: flex;
@@ -116,7 +64,7 @@ body *{ // What does * mean?
 }
 .imag{
 //	background: #000;  /* У блока, оборачивающего картинку при наведении будет просвечивать черный фон */
-//	overflow: hidden;  /* Ограничиваем видиую область */
+//	overflow: hidden;  /* Ограничиваем видимую область */
 }
 .imag > img{
 	opacity: 1;

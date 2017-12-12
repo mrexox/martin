@@ -7,6 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<ul>
+		<li><%= link_to('Сообщения', admin_messages_path) %></li>
+		<li><%= link_to('Слайды', admin_slides_path) %></li>
+	</ul>
 <%= yield %>
 
 </body>

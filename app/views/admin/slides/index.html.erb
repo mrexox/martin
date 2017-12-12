@@ -1,0 +1,9 @@
+<%= link_to('Добавить слайд', new_admin_slide_path) %>
+<% @slides.each do |slide| %>
+	<div class="slide">
+		<%= button_to 'Удалить слайд', admin_slide_path(slide), method: :delete %>
+		<div class="slide__name"><%= slide.name %></div>		
+		<div class="slide__description"><%= slide.description %></div>
+		<img src="<%= slide.photo.url %>" />
+	</div>
+<% end %>

@@ -42,3 +42,15 @@
 		width: 140px;
 	}
 }
+
+@media(max-width: 769px){
+	.message__form {
+		width: 90%;
+		margin: 0 auto;
+		align-items: center;
+		input,
+		textarea {
+			width: 90%;
+		}
+	}
+}
