@@ -1,6 +1,14 @@
-<%= form_for slide, as: :slide, url: admin_slides_path(slide) do |f| %>
-	<%= f.text_field :name %>
-	<%= f.text_field :description %>
-	<%= f.file_field :photo %>
-	<%= f.submit %>
-<% end %>
+<div class="slide-view">
+	<div class="slide-form">
+		<span class='slide-label'>Заголовок слайда</span>
+		<%= f.text_field :name %>
+		<span class='slide-label'>Описание слайда</span>
+		<%= f.text_area :description %>
+		<span class='slide-label'>Изображение</span>
+		<%= f.file_field :photo %>
+		<%= f.submit 'Сохранить'%>
+	</div>
+		<% if f.object.photo.url %>
+			<img src="<%= f.object.photo.url %>" />
+		<% end %>
+</div>

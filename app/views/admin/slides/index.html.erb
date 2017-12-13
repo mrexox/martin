@@ -1,9 +1,12 @@
-<%= link_to('Добавить слайд', new_admin_slide_path) %>
+<%= link_to('Добавить слайд', new_admin_slide_path, class: 'slide-btn') %>
+<div class="slides">
 <% @slides.each do |slide| %>
 	<div class="slide">
-		<%= button_to 'Удалить слайд', admin_slide_path(slide), method: :delete %>
 		<div class="slide__name"><%= slide.name %></div>		
 		<div class="slide__description"><%= slide.description %></div>
 		<img src="<%= slide.photo.url %>" />
+		<%= link_to 'Изменить что-то в слайде', edit_admin_slide_path(slide), class: 'slide-btn' %>
+		<%= button_to 'Удалить слайд', admin_slide_path(slide), method: :delete, class: 'slide-btn' %>
 	</div>
 <% end %>
+</div>

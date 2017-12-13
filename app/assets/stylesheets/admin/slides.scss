@@ -1,3 +1,81 @@
-// Place all the styles related to the Admin/slides controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.slide-btn {
+	padding: 10px 20px 10px 20px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	display: inline-block;
+	color: gray;
+	text-align: center;
+	font-family: sans;
+}
+
+.slide-btn:hover {
+	color: black;
+	cursor: pointer;
+}
+
+.slides {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+
+.slide {
+	background-color: white;
+	box-shadow: 0 0 10px 1px #ccc;
+	width: 20%;
+	height: 40%;
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+	.slide-btn {
+		width: 100%;
+	}
+}
+
+.slide:hover {
+	box-shadow: 0 0 10px 1px #bbb;
+}
+
+.slide__name {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.slide__description {
+	padding: 0 15px 0 15px;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+
+/* Slide Form for new and editing */
+.slide-view {
+	margin: 0 10% 0 10%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	img {
+		margin: 0 50px 0 10px;
+		display: inline-block;
+		width: 35%;
+		box-shadow: 0 0 10px 1px #ccc;
+	}
+}
+.slide-form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	margin: 0 auto;
+	width: 50%;
+	input, textarea {
+		margin: 10px 0 10px 0;
+	}
+}
+.slide-label {
+	font-family: sans;
+}

@@ -1,0 +1,3 @@
+<%= form_for @slide,  url: url_for(controller: 'slides', action: 'update') do |f| %>
+<%= render partial: 'form', locals: {:f => f}%>
+<% end %>
